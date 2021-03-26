@@ -18,8 +18,11 @@ body {
 }
 
 @media (max-width:768px) {
-.app-info { text-align: center;
-}
+
+  .app-info { 
+    text-align: center;
+  }
+  
 }
 .main-center {
     display: block;
