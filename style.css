@@ -21,7 +21,7 @@ body {
 .app-info { text-align: center;
 }
 }
-.centered-main-page-element {
+.main-center {
     display: block;
     width: 500px;
     margin: 0 auto 0;
