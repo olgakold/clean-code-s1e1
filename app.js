@@ -70,6 +70,8 @@ var addTask=function(){
     incompleteTaskHolder.appendChild(listItem);
     bindTaskEvents(listItem, taskCompleted);
 
+    listItem.querySelectorAll('input')[1].className = "input-text"
+    listItem.querySelectorAll('label')[0].className = "task"
     taskInput.value="";
 
 }
