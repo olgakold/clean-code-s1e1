@@ -6,45 +6,52 @@
     <link rel="stylesheet" href="style.css" media="screen" charset="utf-8">
   </head>
   <body>
-    <div class="app-info"><img class="app-info-img" src="./eisenhower-matrix.jpg">
+    <footer class="app-info"><img class="app-info-img" src="./eisenhower-matrix.jpg">
         <a class="more-inf" href="https://goal-life.com/page/method/matrix-eisenhower">
             Want more details?
         </a>
-    </div>
-    <div class="main-center">
-      <p id="add-elem-top">
+    </footer>
+    <main class="main-center">
+      <section>
+        <p id="add-elem-top">
           <label for="new-task">Add Item</label>
           <div class="task-row-wrapper">
               <input id="new-task-input" class="task" type="text">
               <button>Add</button>
           </div>
-      </p>
-      <h3>Todo</h3>
-      <ul id="incomplete-tasks">
-        <li>
+        </p>
+      </section>
+      <section>
+        <h3>Todo</h3>
+        <ul id="incomplete-tasks">
+          <li>
             <input type="checkbox">
             <label class="task">Pay Bills</label>
             <input type="text" class="input-text">
             <button class="edit">Edit</button>
             <button class="delete"><img class="delete-img" src="./remove.svg"></button>       
-        </li>
-        <li class="edit-mode">
+          </li>
+          <li class="edit-mode">
             <input type="checkbox">
             <label class="edit-mode-label">Go Shopping</label>
             <input type="text" value="Go Shopping" class="edit-mode-input">
             <button class="edit">Save</button>
             <button class="delete"><img class="delete-img" src="./remove.svg"></button></li>
-      </ul>  
-      <h3>Completed</h3>
-      <ul id="completed-tasks">
-        <li>
+        </ul>  
+      </section>
+      <section>
+        <h3>Completed</h3>
+        <ul id="completed-tasks">
+          <li>
             <input type="checkbox" checked>
             <label class="completed-tasks-label">See the Doctor</label>
             <input type="text" class="input-text">
             <button class="edit">Edit</button>
-            <button class="delete"><img class="delete-img" src="./remove.svg"></button></li>
-      </ul>
-    </div>
+            <button class="delete"><img class="delete-img" src="./remove.svg"></button>
+          </li>
+        </ul>
+      </section>
+    </main>
     <script src="app.js"></script>
   </body>
 </html>
