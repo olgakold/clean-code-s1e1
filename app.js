@@ -69,9 +69,9 @@ var addTask=function(){
     //Append listItem to incompleteTaskHolder
     incompleteTaskHolder.appendChild(listItem);
     bindTaskEvents(listItem, taskCompleted);
-
-    listItem.querySelectorAll('input')[1].className = "input-text"
-    listItem.querySelectorAll('label')[0].className = "task"
+    listItem.querySelectorAll('input')[1].className = "input-text";
+    listItem.querySelectorAll('label')[0].className = "task";
+    listItem.querySelectorAll('button')[1].querySelectorAll('img')[0].alt = "delete button"
     taskInput.value="";
 
 }
