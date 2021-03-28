@@ -69,8 +69,8 @@ var addTask=function(){
     //Append listItem to incompleteTaskHolder
     incompleteTaskHolder.appendChild(listItem);
     bindTaskEvents(listItem, taskCompleted);
-    listItem.querySelectorAll('input')[1].className = "input-text";
-    listItem.querySelectorAll('label')[0].className = "task";
+    listItem.querySelectorAll('input')[1].className = "input input-text";
+    listItem.querySelectorAll('label')[0].className = "label task";
     listItem.querySelectorAll('button')[1].querySelectorAll('img')[0].alt = "delete button"
     taskInput.value="";
 
@@ -98,12 +98,12 @@ var editTask=function(){
         label.innerText=editInput.value;
         editBtn.innerText="Edit";
         editInput.className = "input-text"
-        label.parentNode.parentNode.id === "incomplete-tasks" ? label.className = "task" : label.className = "completed-tasks-label"
+        label.parentNode.parentNode.id === "incomplete-tasks" ? label.className = "label task" : label.className = "label completed-tasks-label"
 
     }else{
         editInput.value=label.innerText;
-        editInput.className = "edit-mode-input"
-        label.className = "edit-mode-label"
+        editInput.className = "input edit-mode-input"
+        label.className = "label edit-mode-label"
         editBtn.innerText="Save";
     }
 
@@ -132,8 +132,8 @@ var taskCompleted=function(){
     var listItem=this.parentNode;
     completedTasksHolder.appendChild(listItem);
 
-    listItem.querySelectorAll('input')[1].parentNode.className === "edit-mode" ? listItem.querySelectorAll('label')[0].className = "edit-mode-label" : listItem.querySelectorAll('label')[0].className = "completed-tasks-label"
-    listItem.querySelectorAll('input')[1].parentNode.className === "edit-mode" ? listItem.querySelectorAll('input')[1].className = "edit-mode-input" : listItem.querySelectorAll('input')[1].className = "input-text"
+    listItem.querySelectorAll('input')[1].parentNode.className === "li edit-mode" ? listItem.querySelectorAll('label')[0].className = "label edit-mode-label" : listItem.querySelectorAll('label')[0].className = "label completed-tasks-label"
+    listItem.querySelectorAll('input')[1].parentNode.className === "li edit-mode" ? listItem.querySelectorAll('input')[1].className = "input edit-mode-input" : listItem.querySelectorAll('input')[1].className = "input input-text"
     bindTaskEvents(listItem, taskIncomplete);
 }
 
@@ -146,8 +146,8 @@ var taskIncomplete=function(){
     var listItem=this.parentNode;
     incompleteTaskHolder.appendChild(listItem);
     //listItem.querySelectorAll('label')[0].className = "tasks";
-    listItem.querySelectorAll('input')[1].parentNode.className === "edit-mode" ? listItem.querySelectorAll('label')[0].className = "edit-mode-label" : listItem.querySelectorAll('label')[0].className = "task"
-    listItem.querySelectorAll('input')[1].parentNode.className === "edit-mode" ? listItem.querySelectorAll('input')[1].className = "edit-mode-input" : listItem.querySelectorAll('input')[1].className = "input-text"
+    listItem.querySelectorAll('input')[1].parentNode.className === "li edit-mode" ? listItem.querySelectorAll('label')[0].className = "label edit-mode-label" : listItem.querySelectorAll('label')[0].className = "label task"
+    listItem.querySelectorAll('input')[1].parentNode.className === "li edit-mode" ? listItem.querySelectorAll('input')[1].className = "input edit-mode-input" : listItem.querySelectorAll('input')[1].className = "input input-text"
     bindTaskEvents(listItem,taskCompleted);
 
 }
