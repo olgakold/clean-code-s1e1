@@ -8,9 +8,9 @@
 
 // Event handling, user interaction is what starts the code execution.
 
-var taskInput=document.getElementById("new-task");//Add a new task.
+var taskInput=document.getElementById("new-task-input");//Add a new task.
 var addButton=document.getElementsByTagName("button")[0];//first button
-var incompleteTaskHolder=document.getElementById("incompleteTasks");//ul of #incompleteTasks
+var incompleteTaskHolder=document.getElementById("incomplete-tasks");//ul of #incompleteTasks
 var completedTasksHolder=document.getElementById("completed-tasks");//completed-tasks
 
 
@@ -33,7 +33,7 @@ var createNewTaskElement=function(taskString){
     var deleteButtonImg=document.createElement("img");//delete button image
 
     label.innerText=taskString;
-    label.className='task';
+    label.className='tasks';
 
     //Each elements, needs appending
     checkBox.type="checkbox";
@@ -45,6 +45,7 @@ var createNewTaskElement=function(taskString){
 
     deleteButton.className="delete";
     deleteButtonImg.src='./remove.svg';
+    deleteButtonImg.classList="delete-img";
     deleteButton.appendChild(deleteButtonImg);
 
 
@@ -85,7 +86,8 @@ var editTask=function(){
     var editInput=listItem.querySelector('input[type=text]');
     var label=listItem.querySelector("label");
     var editBtn=listItem.querySelector(".edit");
-    var containsClass=listItem.classList.contains("editMode");
+    var containsClass=listItem.classList.contains("edit-mode");
+    
     //If class of the parent is .editmode
     if(containsClass){
 
@@ -93,13 +95,18 @@ var editTask=function(){
         //label becomes the inputs value.
         label.innerText=editInput.value;
         editBtn.innerText="Edit";
+        editInput.className = "input-text"
+        label.parentNode.parentNode.id === "incomplete-tasks" ? label.className = "task" : label.className = "completed-tasks-label"
+
     }else{
         editInput.value=label.innerText;
+        editInput.className = "edit-mode-input"
+        label.className = "edit-mode-label"
         editBtn.innerText="Save";
     }
 
     //toggle .editmode on the parent.
-    listItem.classList.toggle("editMode");
+    listItem.classList.toggle("edit-mode");
 };
 
 
@@ -118,12 +125,14 @@ var deleteTask=function(){
 //Mark task completed
 var taskCompleted=function(){
     console.log("Complete Task...");
-
+    
     //Append the task list item to the #completed-tasks
     var listItem=this.parentNode;
     completedTasksHolder.appendChild(listItem);
-    bindTaskEvents(listItem, taskIncomplete);
 
+    listItem.querySelectorAll('input')[1].parentNode.className === "edit-mode" ? listItem.querySelectorAll('label')[0].className = "edit-mode-label" : listItem.querySelectorAll('label')[0].className = "completed-tasks-label"
+    listItem.querySelectorAll('input')[1].parentNode.className === "edit-mode" ? listItem.querySelectorAll('input')[1].className = "edit-mode-input" : listItem.querySelectorAll('input')[1].className = "input-text"
+    bindTaskEvents(listItem, taskIncomplete);
 }
 
 
@@ -134,7 +143,11 @@ var taskIncomplete=function(){
     //Append the task list item to the #incompleteTasks.
     var listItem=this.parentNode;
     incompleteTaskHolder.appendChild(listItem);
+    //listItem.querySelectorAll('label')[0].className = "tasks";
+    listItem.querySelectorAll('input')[1].parentNode.className === "edit-mode" ? listItem.querySelectorAll('label')[0].className = "edit-mode-label" : listItem.querySelectorAll('label')[0].className = "task"
+    listItem.querySelectorAll('input')[1].parentNode.className === "edit-mode" ? listItem.querySelectorAll('input')[1].className = "edit-mode-input" : listItem.querySelectorAll('input')[1].className = "input-text"
     bindTaskEvents(listItem,taskCompleted);
+
 }
 
 
